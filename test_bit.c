@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 15:12:27 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/03/04 20:51:27 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/03/06 21:30:46 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	printBi(int num)
 		x = 1 << i;//iの数だけ1をシフトするため1で固定
 		x = num & x;
 		bit[len - i - 1] = x >> i;
+		printf("bit[%d] = %d\n", i, x >> i);
 	}
 	// printf("0b");
 	for(int i = 0; i < len; i++) {
@@ -93,7 +94,7 @@ int main(void) {
 	// num1 = 0b0101;
 	// num2 = 0b0011;
 	// result = num1 & num2;
-	int result = 254;
+	int result = 'a';
 	
 	// 演算結果を2進数と10進数で表示
 	printf("2進数:");
