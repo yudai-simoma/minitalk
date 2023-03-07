@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 11:35:59 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/03/07 15:43:57 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/03/07 19:30:14 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,26 +30,25 @@ char	ft_conversion_bit_10(int base_2)
 		base = base * 2;
 		i++;
 	}
-
 	return ((char)result);
 }
 
 //シグナルハンドラとして定義したい関数
 void	ft_signal_handler(int signum)
 {
-	static	int	put_num;
-	static	int count;
+	static int	put_num;
+	static int	count;
+	char		c;
 
 	if (signum == SIGUSR1)
 		put_num = (put_num * 10) + 1;
 	if (signum == SIGUSR2)
 		put_num = (put_num * 10) + 0;
 	count++;
-	// printf("put_num = %d, count = %d\n", put_num, count);
 	if (count == 8)
 	{
-		printf("%c\n", ft_conversion_bit_10(put_num));//ft_に変更
-		//\nがないと出ない
+		c = ft_conversion_bit_10(put_num);
+		write(1, &c, 1);
 		put_num = 0;
 		count = 0;
 	}
