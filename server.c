@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 11:35:59 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/03/07 19:30:14 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/03/07 20:58:23 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ char	ft_conversion_bit_10(int base_2)
 	result = 0;
 	base = 1;
 	i = 0;
-	/* 2進数を10進数に変換 */
-	while(base_2>0){
-		result = result + ( base_2 % 10 ) * base;
+	while (base_2 > 0)
+	{
+		result = result + (base_2 % 10) * base;
 		base_2 = base_2 / 10;
 		base = base * 2;
 		i++;

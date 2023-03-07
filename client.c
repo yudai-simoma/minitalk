@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 11:35:55 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/03/07 19:35:36 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/03/07 20:29:39 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	main(int argc, char *argv[])
 			else if (bit_str[j] == '0')
 				kill((pid_t)atoi(argv[1]), SIGUSR2);
 			j++;
-			// usleep(10000);
+			usleep(450);
 		}
 		i++;
 	}
