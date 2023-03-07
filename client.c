@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 11:35:55 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/03/06 21:40:39 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/03/07 15:42:59 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	reverse_str(char bit_str[9])
 }
 
 // 2進数表示用の関数
-static void	ft_conversion_bit(int num, char bit_str[9])
+static void	ft_conversion_bit_2(int num, char bit_str[9])
 {
 	int	i;
 	int	x;
@@ -55,7 +55,7 @@ int	main(int argc, char *argv[])
 	bit_str[8] = '\0';
 	while (argv[2][i] != '\0')
 	{
-		ft_conversion_bit(argv[2][i], bit_str);
+		ft_conversion_bit_2(argv[2][i], bit_str);
 		j = 0;
 		while (j < 8)
 		{
