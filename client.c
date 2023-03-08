@@ -6,63 +6,65 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 11:35:55 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/03/07 20:29:39 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/03/08 23:06:41 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-#include <stdio.h>
 
-static void	reverse_str(char bit_str[9])
-{
-	int		i;
-	char	p;
-
-	i = 0;
-	while (i < 4)
-	{
-		p = bit_str[i];
-		bit_str[i] = bit_str[7 - i];
-		bit_str[7 - i] = p;
-		i++;
-	}
-}
-
-// 2進数表示用の関数
-static void	ft_conversion_bit_2(int num, char bit_str[9])
+/*
+ * 1文字をint(10進数)で受け取り8ビットの文字列(2進数)へ格納する関数
+ * ビット演算で2進数へ変換
+ * 変換方法
+ * 	1は2進数で、00000001
+ * 	1を基準に、桁を一つずつずらし、AND演算で0,1を格納している
+ */
+static void	ft_conversion_bit_2(int a_num, char a_bit_str[9])
 {
 	int	i;
-	int	x;
+	int	r_base_1;
 
-	i = 0;
-	while (i < 8)
+	i = 7;
+	while (i >= 0)
 	{
-		x = 1 << i;
-		x = num & x;
-		bit_str[i] = (x >> i) + '0';
-		i++;
+		r_base_1 = 1 << i;
+		r_base_1 = a_num & r_base_1;
+		a_bit_str[i] = (r_base_1 >> i) + '0';
+		i--;
 	}
-	reverse_str(bit_str);
 }
 
-int	main(int argc, char *argv[])
+/*
+ * serverへ文字列を送るプログラム（正常に送れたらserverからもシグナルを受け取る）
+ * コマンドライン引数：第二引数　プロセスID
+ * 　　　　　　　　　　第三引数　sarverへ送りたい文字列
+ * 文字列を一文字ずつ送信、1文字を8ビットのバイナリデータで送信する
+ * 一文字ずつft_conversion_bit2の関数へ渡し、バイナリデータを作成
+ * 
+ * usleepは450に設定、一秒間に約277文字遅れる設定にしている
+ * 計算方法
+ * 	1秒は1000000マイクロ秒 
+ * 	450 * 8 = 3600マイクロ秒
+ * 	1000000 / 3600 = 227
+ */
+int	main(int a_argc, char *a_argv[])
 {
 	int		i;
 	int		j;
-	char	bit_str[9];
+	char	r_bit_str[9];
 
 	i = 0;
-	bit_str[8] = '\0';
-	while (argv[2][i] != '\0')
+	r_bit_str[8] = '\0';
+	while (a_argv[2][i] != '\0')
 	{
-		ft_conversion_bit_2(argv[2][i], bit_str);
+		ft_conversion_bit_2((int)a_argv[2][i], r_bit_str);
 		j = 0;
 		while (j < 8)
 		{
-			if (bit_str[j] == '1')
-				kill((pid_t)atoi(argv[1]), SIGUSR1);
-			else if (bit_str[j] == '0')
-				kill((pid_t)atoi(argv[1]), SIGUSR2);
+			if (r_bit_str[j] == '1')
+				kill((pid_t)ft_atoi(a_argv[1]), SIGUSR1);
+			else if (r_bit_str[j] == '0')
+				kill((pid_t)ft_atoi(a_argv[1]), SIGUSR2);
 			j++;
 			usleep(450);
 		}
@@ -70,3 +72,8 @@ int	main(int argc, char *argv[])
 	}
 	return (0);
 }
+
+//エラー処理
+//秒数指定の秒数確認
+//serverからのシグナル受け取り
+//Makefile,libft,printfを使用できるようにする
