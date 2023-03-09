@@ -6,11 +6,21 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 11:35:55 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/03/08 23:06:41 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/03/09 19:19:20 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+
+/*
+ * コマンドライン引数のエラーチェック
+ */
+int	ft_error_check(int a_argc)
+{
+	if (a_argc != 3)
+		return (1);
+	return (0);
+}
 
 /*
  * 1文字をint(10進数)で受け取り8ビットの文字列(2進数)へ格納する関数
@@ -22,16 +32,20 @@
 static void	ft_conversion_bit_2(int a_num, char a_bit_str[9])
 {
 	int	i;
+	int	j;
 	int	r_base_1;
 
-	i = 7;
-	while (i >= 0)
+	i = 0;
+	j = 7;
+	while (j >= 0)
 	{
 		r_base_1 = 1 << i;
 		r_base_1 = a_num & r_base_1;
-		a_bit_str[i] = (r_base_1 >> i) + '0';
-		i--;
+		a_bit_str[j] = (r_base_1 >> i) + '0';
+		i++;
+		j--;
 	}
+	ft_printf("bitstr = %s", a_bit_str);
 }
 
 /*
@@ -47,12 +61,14 @@ static void	ft_conversion_bit_2(int a_num, char a_bit_str[9])
  * 	450 * 8 = 3600マイクロ秒
  * 	1000000 / 3600 = 227
  */
-int	main(int a_argc, char *a_argv[])
+int	main(int a_argc, char **a_argv)
 {
 	int		i;
 	int		j;
 	char	r_bit_str[9];
 
+	if (ft_error_check(a_argc) == 1)
+		return (0);
 	i = 0;
 	r_bit_str[8] = '\0';
 	while (a_argv[2][i] != '\0')
@@ -66,7 +82,7 @@ int	main(int a_argc, char *a_argv[])
 			else if (r_bit_str[j] == '0')
 				kill((pid_t)ft_atoi(a_argv[1]), SIGUSR2);
 			j++;
-			usleep(450);
+			usleep(100);
 		}
 		i++;
 	}
@@ -74,6 +90,11 @@ int	main(int a_argc, char *a_argv[])
 }
 
 //エラー処理
-//秒数指定の秒数確認
 //serverからのシグナル受け取り
-//Makefile,libft,printfを使用できるようにする
+
+/*
+ * 実行方法
+ * cc client.c -o client
+ * ./client プロセスID 送りたい文字
+ * ./client 7392 abcdefghijk
+ */

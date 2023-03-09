@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/04 11:36:27 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/03/09 18:57:10 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/01/14 16:26:37 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/01/31 20:14:53 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
-# include <signal.h>	//シグナル関数に使用
-# include <unistd.h>	//getpidなどで使用
-# include <stdlib.h>	//mallocなどで使用
-# include "libft/libft.h"
-# include "ft_printf/ft_printf.h"
+#include "libft.h"
 
-#endif
+/*
+** 大文字の英字を小文字に変換する関数です。
+** 引数に大文字以外の値を指定した場合は、そのまま値が返ってきます。
+*/
+int	ft_tolower(int c)
+{
+	if (c >= 65 && c <= 90)
+		return (c + 32);
+	return (c);
+}

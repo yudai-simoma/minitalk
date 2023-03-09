@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/04 11:36:27 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/03/09 18:57:10 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/01/11 18:33:16 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/01/31 19:29:20 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
-# include <signal.h>	//シグナル関数に使用
-# include <unistd.h>	//getpidなどで使用
-# include <stdlib.h>	//mallocなどで使用
-# include "libft/libft.h"
-# include "ft_printf/ft_printf.h"
+#include "libft.h"
 
-#endif
+/*
+** 文字列の先頭から「文字」を検索して見つかった場所をポインタで返します。
+*/
+char	*ft_strchr(const char *s, int c)
+{
+	while (*s != '\0')
+	{
+		if (*s == (char)c)
+			return ((char *)s);
+		s++;
+	}
+	if (c == 0)
+		return ((char *)s);
+	return (NULL);
+}

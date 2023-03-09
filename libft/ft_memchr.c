@@ -1,21 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/04 11:36:27 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/03/09 18:57:10 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/01/14 14:50:40 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/02/05 15:22:11 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
-# include <signal.h>	//シグナル関数に使用
-# include <unistd.h>	//getpidなどで使用
-# include <stdlib.h>	//mallocなどで使用
-# include "libft/libft.h"
-# include "ft_printf/ft_printf.h"
+#include "libft.h"
 
-#endif
+/*
+** メモリの中からバイト数を指定して、文字を検索する関数です。
+*/
+void	*ft_memchr(const void *s, int c, size_t n)
+{
+	unsigned char	*ss;
+	unsigned char	cc;
+	size_t			i;
+
+	ss = (unsigned char *)s;
+	cc = (unsigned char)c;
+	i = 0;
+	while (i < n)
+	{
+		if (ss[i] == cc)
+			return ((void *)&s[i]);
+		i++;
+	}
+	return (NULL);
+}

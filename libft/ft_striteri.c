@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/04 11:36:27 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/03/09 18:57:10 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/01/20 23:37:01 by shimomayuda       #+#    #+#             */
+/*   Updated: 2023/01/31 19:29:42 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
-# include <signal.h>	//シグナル関数に使用
-# include <unistd.h>	//getpidなどで使用
-# include <stdlib.h>	//mallocなどで使用
-# include "libft/libft.h"
-# include "ft_printf/ft_printf.h"
+#include "libft.h"
 
-#endif
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+{
+	size_t	i;
+
+	if ((s == NULL) || (f == NULL))
+		return ((void)0);
+	i = 0;
+	while (s[i] != '\0')
+	{
+		f((unsigned int)i, &s[i]);
+		i++;
+	}
+}

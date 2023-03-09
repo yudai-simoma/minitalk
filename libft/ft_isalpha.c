@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/04 11:36:27 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/03/09 18:57:10 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/01/10 19:50:01 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/01/31 19:25:33 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
-# include <signal.h>	//シグナル関数に使用
-# include <unistd.h>	//getpidなどで使用
-# include <stdlib.h>	//mallocなどで使用
-# include "libft/libft.h"
-# include "ft_printf/ft_printf.h"
+#include "libft.h"
 
-#endif
+/*
+** 引数c が英字であれば 0以外を返し、そうでなければ 0 を返す。(8進数表現)
+*/
+int	ft_isalpha(int c)
+{
+	if ((c >= 0101 && c <= 0132) || (c >= 0141 && c <= 0172))
+		return (1);
+	else
+		return (0);
+}

@@ -1,21 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/04 11:36:27 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/03/09 18:57:10 by yshimoma         ###   ########.fr       */
+/*   Created: 2022/10/20 13:15:55 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/02/06 17:08:25 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
-# include <signal.h>	//シグナル関数に使用
-# include <unistd.h>	//getpidなどで使用
-# include <stdlib.h>	//mallocなどで使用
-# include "libft/libft.h"
-# include "ft_printf/ft_printf.h"
+#include "libft.h"
 
-#endif
+/*
+** 文字列srcを複製し、新しい文字列へのポインターを返す
+*/
+char	*ft_strdup(const char *src)
+{
+	char	*src_mal;
+	int		i;
+
+	src_mal = (char *)ft_calloc(sizeof(char) * (ft_strlen(src) + 1), 1);
+	if (src_mal == NULL)
+		return (NULL);
+	i = 0;
+	while (src[i] != '\0')
+	{
+		src_mal[i] = src[i];
+		i++;
+	}
+	src_mal[i] = '\0';
+	return (src_mal);
+}

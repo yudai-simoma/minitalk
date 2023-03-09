@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 11:35:59 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/03/08 23:06:52 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/03/09 18:23:29 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,11 @@ int	main(void)
 	return (0);
 }
 
-//エラー処理
 //client側へのシグナル送信
 //exit関数の使用有無
+
+/*
+ * 実行方法
+ * cc server.c -o server
+ * ./server
+ */

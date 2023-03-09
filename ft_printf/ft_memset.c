@@ -1,21 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/04 11:36:27 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/03/09 18:57:10 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/01/13 20:18:38 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/02/28 19:10:22 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
-# include <signal.h>	//シグナル関数に使用
-# include <unistd.h>	//getpidなどで使用
-# include <stdlib.h>	//mallocなどで使用
-# include "libft/libft.h"
-# include "ft_printf/ft_printf.h"
+#include "ft_printf.h"
 
-#endif
+/*
+** メモリに指定バイト数分の値をセットすることができます。
+*/
+void	*ft_memset(void *b, int c, size_t len)
+{
+	unsigned char	*bb;
+	unsigned char	cc;
+	size_t			i;
+
+	bb = (unsigned char *)b;
+	cc = (unsigned char)c;
+	i = 0;
+	while (i < len)
+	{
+		*bb = cc;
+		bb++;
+		i++;
+	}
+	return (b);
+}

@@ -1,21 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/04 11:36:27 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/03/09 18:57:10 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/01/14 15:24:32 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/01/31 19:27:41 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
-# include <signal.h>	//シグナル関数に使用
-# include <unistd.h>	//getpidなどで使用
-# include <stdlib.h>	//mallocなどで使用
-# include "libft/libft.h"
-# include "ft_printf/ft_printf.h"
+#include "libft.h"
 
-#endif
+/*
+** 指定バイト数のメモリブロックを比較する関数です。
+*/
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
+{
+	unsigned char	*ss1;
+	unsigned char	*ss2;
+	size_t			i;
+
+	ss1 = (unsigned char *)s1;
+	ss2 = (unsigned char *)s2;
+	i = 0;
+	while (i < n)
+	{
+		if (ss1[i] != ss2[i])
+			return (ss1[i] - ss2[i]);
+		i++;
+	}
+	return (0);
+}

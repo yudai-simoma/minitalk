@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/04 11:36:27 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/03/09 18:57:10 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/01/20 23:33:11 by shimomayuda       #+#    #+#             */
+/*   Updated: 2023/02/28 19:08:39 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
-# include <signal.h>	//シグナル関数に使用
-# include <unistd.h>	//getpidなどで使用
-# include <stdlib.h>	//mallocなどで使用
-# include "libft/libft.h"
-# include "ft_printf/ft_printf.h"
+#include "ft_printf.h"
 
-#endif
+/*
+** 文字列を出力する
+*/
+void	ft_putstr_fd(char *s, int fd)
+{
+	int	x;
+
+	x = 0;
+	if (s == NULL)
+		return ;
+	if (fd < 0)
+		return ;
+	x = write(fd, s, ft_strlen(s));
+	if (x == -1)
+		g_error_flg = -1;
+}
