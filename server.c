@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 11:35:59 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/03/09 18:23:29 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/03/09 19:25:17 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ char	ft_conversion_bit_10(int a_base_2)
 	return ((char)r_return_c);
 }
 
-//シグナルハンドラとして定義したい関数
 /*
  * シグナルハンドラとして定義した関数
  * シグナルが送られてくると呼ばれ8ビット分の0,1を受け取り、ft_conversion_bit_10へ渡し2進数に変換
@@ -86,9 +85,6 @@ int	main(void)
 		pause();
 	return (0);
 }
-
-//client側へのシグナル送信
-//exit関数の使用有無
 
 /*
  * 実行方法
