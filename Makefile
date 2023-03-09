@@ -6,11 +6,11 @@
 #    By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/09 18:23:46 by yshimoma          #+#    #+#              #
-#    Updated: 2023/03/09 19:15:08 by yshimoma         ###   ########.fr        #
+#    Updated: 2023/03/09 19:22:51 by yshimoma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = minitake
+NAME = minitalk
 NAME_SERVER = server
 NAME_CLIENT = client
 SRCS_SERVER = server.c
